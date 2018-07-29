@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ViewController">
+   <children>
+      <VBox prefHeight="594.0" prefWidth="389.0" spacing="10.0">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="900.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="50.0" prefWidth="51.0" text="搜尋">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="searchTextField" prefHeight="50.0" prefWidth="401.0" />
+                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="51.0" prefWidth="83.0" text="搜尋">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <GridPane hgap="10.0" prefHeight="650.0" vgap="10.0">
+               <children>
+                  <VBox prefHeight="400.0" prefWidth="400.0">
+                     <children>
+                        <HBox spacing="10.0">
+                           <children>
+                              <Label text="搜尋結果">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="pageChoiceBox" prefHeight="9.0" prefWidth="56.0" />
+                           </children>
+                        </HBox>
+                        <ListView fx:id="resultListView" prefHeight="424.0" prefWidth="400.0" />
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="50.0" prefWidth="400.0" text="添加">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Button>
+                     </children>
+                  </VBox>
+                  <BorderPane prefHeight="400.0" prefWidth="400.0" GridPane.columnIndex="1">
+                     <center>
+                        <ImageView fx:id="resultPreviewImageView" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                     </center>
+                     <left>
+                        <Button mnemonicParsing="false" text="&lt;" BorderPane.alignment="CENTER" />
+                     </left>
+                     <right>
+                        <Button mnemonicParsing="false" text="&gt;" BorderPane.alignment="CENTER" />
+                     </right>
+                     <top>
+                        <Label text="預覽" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </top>
+                  </BorderPane>
+                  <VBox prefHeight="400.0" prefWidth="400.0" GridPane.rowIndex="1">
+                     <children>
+                        <Label text="儲存清單">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="selectedListView" prefHeight="400.0" prefWidth="400.0" />
+                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeButtonAction" prefHeight="0.0" prefWidth="400.0" text="移除">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Button>
+                     </children>
+                  </VBox>
+                  <BorderPane prefHeight="400.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <center>
+                        <ImageView fx:id="selectedPreviewImageView" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                     </center>
+                     <left>
+                        <Button mnemonicParsing="false" text="&lt;" BorderPane.alignment="CENTER" />
+                     </left>
+                     <right>
+                        <Button mnemonicParsing="false" text="&gt;" BorderPane.alignment="CENTER" />
+                     </right>
+                     <top>
+                        <Label text="預覽" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </top>
+                  </BorderPane>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="300.0" prefWidth="300.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="300.0" prefWidth="300.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="300.0" minHeight="300.0" prefHeight="300.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="300.0" minHeight="300.0" prefHeight="300.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <HBox prefHeight="50.0" prefWidth="900.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="34.0" prefWidth="72.0" text="儲存路徑">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="savePathTextField" prefHeight="45.0" prefWidth="229.0" />
+                  <Button mnemonicParsing="false" onAction="#browseButtonAction" prefHeight="86.0" prefWidth="115.0" text="瀏覽">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#saveButtonAction" prefHeight="33.0" prefWidth="100.0" text="儲存">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Label text="進度">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0" />
+                  <ProgressIndicator fx:id="progressIndicator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="46.0" progress="0.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</Pane>
